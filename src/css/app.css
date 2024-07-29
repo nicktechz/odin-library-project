@@ -25,7 +25,6 @@ body {
   display: flex;
   width: 100%;
   padding: 28px 32px;
-  height: 100vh;
 }
 
 aside {
@@ -152,4 +151,84 @@ li span {
 }
 .contentNav button svg {
   fill: var(--white);
+}
+#books {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.book {
+  position: relative;
+  padding: 48px;
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  height: 300px;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  flex-direction: column;
+}
+.book::before {
+  content: "";
+  background-image: url("https://i0.wp.com/princetonbuffer.princeton.edu/wp-content/uploads/sites/185/2015/02/The-Hobbit.jpg?resize=672%2C372&ssl=1");
+  background-size: cover;
+  position: absolute;
+  background-position: center;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.4;
+}
+.book > div {
+  position: relative;
+}
+.bookHeader {
+  height: 80%;
+}
+
+.bookTitle {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.bookTitle .bookStatus {
+  background-color: #3a9700;
+  color: var(--white);
+  padding: 4px 16px;
+  border-radius: var(--border-radius-md);
+}
+
+.book h3 {
+  font-size: 2rem;
+  line-height: 1;
+}
+.book span {
+  color: var(--gray-8);
+}
+
+.bookFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookFooter button {
+  border-radius: var(--border-radius-md);
+  padding: 8px 24px;
+  background: transparent;
+  border: 1px solid var(--white);
+  color: var(--white);
+}
+.bookFooter button:hover {
+  cursor: pointer;
+}
+.bookFooter > div > .deleteBtn {
+  background-color: #930000;
+  border: 1px solid #930000;
+}
+.bookFooterBtnGroup {
+  display: flex;
+  gap: 12px;
 }
