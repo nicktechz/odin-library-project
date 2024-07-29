@@ -104,14 +104,47 @@ li span {
   border-radius: 0px 0px var(--border-radius-md) var(--border-radius-md);
   background: rgb(2, 0, 36);
   background: linear-gradient(
-    90deg,
+    45deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(9, 9, 121, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
+    rgba(53, 0, 255, 1) 100%
   );
   background-origin: border-box;
   background-clip: content-box, border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.header .content {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+}
+.header .content .contentTitle h1 {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.contentTitle {
+  max-width: 700px;
+}
+.contentNav {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.contentNav p {
+  color: var(--gray-8);
+}
+.contentNav button {
+  display: flex;
+  background-color: #65a30d;
+  padding: 12px 24px;
+  border: none;
+  color: var(--white);
+  border-radius: var(--border-radius-md);
+}
+.contentNav button svg {
+  fill: var(--white);
 }
