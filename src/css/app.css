@@ -1,0 +1,117 @@
+:root {
+  --white: #fff;
+  --gray-1: #fcfcfd;
+  --gray-2: #f9f9fb;
+  --gray-3: #eff0f3;
+  --gray-4: #e7e8ec;
+  --gray-5: #e0e1e6;
+  --gray-6: #d8d9e0;
+  --gray-7: #cdced7;
+  --gray-8: #b9bbc6;
+  --gray-9: #8b8d98;
+  --gray-10: #80828d;
+  --gray-11: #62636c;
+  --gray-12: #1e1f24;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+}
+html {
+  background-color: black;
+  font-family: "Satoshi", sans-serif;
+  color: var(--white);
+}
+
+body {
+  display: flex;
+  width: 100%;
+  padding: 28px 32px;
+  height: 100vh;
+}
+
+aside {
+  flex-basis: 180px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 36px;
+}
+nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  border-radius: var(--border-radius-sm);
+  background-color: var(--gray-9);
+  flex: 1;
+  border: 1px solid var(--gray-8);
+}
+
+.logoBox {
+  height: 50px;
+}
+
+.logo {
+  fill: var(--white);
+  max-width: 80px;
+  height: auto;
+}
+.navIco {
+  fill: var(--gray-7);
+  max-width: 20px;
+  height: auto;
+  margin-right: 8px;
+}
+
+.navBox {
+  flex-grow: 1;
+}
+.navBox > ul > li {
+  display: flex;
+}
+
+.navBox ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.active > span {
+  color: var(--white);
+}
+.active > svg {
+  fill: var(--white);
+}
+li span {
+  color: var(--gray-7);
+}
+
+.footerBox > ul > li {
+  display: flex;
+}
+.footerBox ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.footerBox {
+  height: 120px;
+}
+
+/* MAIN */
+.header {
+  height: 300px;
+  background-color: var(--gray-1);
+  border-radius: 0px 0px var(--border-radius-md) var(--border-radius-md);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
