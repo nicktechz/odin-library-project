@@ -7,15 +7,17 @@ function Book(title, author, pages, isRead) {
   this.author = author;
   this.pages = pages;
   this.isRead = isRead;
-  this.id = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
-  this.info = function () {
-    return console.log(
-      `${title} by ${author}, ${pages}, ${isRead ? "read" : "not read yet"} `
-    );
-  };
+  this.deleteBtn;
+  this.isReadBtn;
 }
 
-const addBook = (title, author, pages, isRead, id) => {
+const addBook = (arr, index) => {
+  // EXTRACT DATA
+  const title = arr[index].title;
+  const isRead = arr[index].isRead;
+  const author = arr[index].author;
+  const pages = arr[index].pages;
+
   const bookBox = document.createElement("div");
   const bookHeader = document.createElement("div");
   const bookTitleBox = document.createElement("div");
@@ -35,10 +37,11 @@ const addBook = (title, author, pages, isRead, id) => {
   bookStatus.classList.add("bookStatus");
   bookFooter.classList.add("bookFooter");
   bookFooterBtnGroup.classList.add("bookFooterBtnGroup");
+  isReadBtn.classList.add("readBtn");
   deleteBtn.classList.add("deleteBtn");
 
   // ADD ATTRIBUTE
-  bookBox.setAttribute("data-content", id);
+  bookBox.setAttribute("data-content", index);
 
   // ADD TEXT
   bookTitle.textContent = title;
@@ -63,16 +66,53 @@ const addBook = (title, author, pages, isRead, id) => {
   bookFooter.append(bookFooterBtnGroup);
   bookFooterBtnGroup.append(isReadBtn);
   bookFooterBtnGroup.append(deleteBtn);
+
+  deleteBtn.addEventListener("click", () => {
+    console.log(myLibrary);
+    arr.splice(index, 1);
+
+    bookBox.remove();
+  });
+  isReadBtn.addEventListener("click", () => {
+    toggleStatus(
+      arr[index].isRead,
+      isReadBtn,
+      bookStatus,
+      index,
+      pages,
+      totalPages
+    );
+  });
+};
+
+const toggleStatus = (
+  currStatus,
+  isReadBtn,
+  bookStatus,
+  index,
+  pages,
+  totalPages
+) => {
+  if (currStatus === true) {
+    myLibrary[index].isRead = false;
+    isReadBtn.textContent = "Read";
+    bookStatus.style.backgroundColor = "#b91c1c";
+    bookStatus.textContent = "Not read";
+    totalPages.textContent = `0 pages / ${pages} pages`;
+  } else {
+    myLibrary[index].isRead = true;
+    isReadBtn.textContent = "Not read";
+    bookStatus.style.backgroundColor = "#3a9700";
+    bookStatus.textContent = "Read";
+    totalPages.textContent = `${pages} pages / ${pages} pages`;
+  }
 };
 
 function addBookToLibrary(obj) {
   const bookTitle = obj.title;
-  const bookAuthor = obj.author;
-  const bookPages = obj.pages;
-  const isRead = obj.isRead;
-  const id = obj.id;
   myLibrary.push(obj);
-  addBook(bookTitle, bookAuthor, bookPages, isRead, id);
+  const index = myLibrary.findIndex((book) => book.title === bookTitle);
+  addBook(myLibrary, index);
 }
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
@@ -84,6 +124,3 @@ const elClubDeLas5Am = new Book(
 );
 addBookToLibrary(theHobbit);
 addBookToLibrary(elClubDeLas5Am);
-
-console.log(myLibrary);
-theHobbit.info();
