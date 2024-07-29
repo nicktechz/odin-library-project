@@ -41,7 +41,6 @@ const addBook = (arr, index) => {
   deleteBtn.classList.add("deleteBtn");
 
   // ADD ATTRIBUTE
-  bookBox.setAttribute("data-content", index);
 
   // ADD TEXT
   bookTitle.textContent = title;
@@ -68,44 +67,33 @@ const addBook = (arr, index) => {
   bookFooterBtnGroup.append(deleteBtn);
 
   deleteBtn.addEventListener("click", () => {
-    console.log(myLibrary);
-    arr.splice(index, 1);
-
+    const index = arr.findIndex((book) => book.title === title);
+    removeBook(index);
     bookBox.remove();
   });
+
   isReadBtn.addEventListener("click", () => {
-    toggleStatus(
-      arr[index].isRead,
-      isReadBtn,
-      bookStatus,
-      index,
-      pages,
-      totalPages
-    );
+    const index = arr.findIndex((book) => book.title === title);
+    toggleStatus(arr[index], bookStatus, isReadBtn);
   });
 };
 
-const toggleStatus = (
-  currStatus,
-  isReadBtn,
-  bookStatus,
-  index,
-  pages,
-  totalPages
-) => {
-  if (currStatus === true) {
-    myLibrary[index].isRead = false;
-    isReadBtn.textContent = "Read";
-    bookStatus.style.backgroundColor = "#b91c1c";
+const toggleStatus = (book, bookStatus, isReadBtn) => {
+  if (book.isRead === true) {
+    book.isRead = false;
     bookStatus.textContent = "Not read";
-    totalPages.textContent = `0 pages / ${pages} pages`;
-  } else {
-    myLibrary[index].isRead = true;
+    bookStatus.style.backgroundColor = "#b91c1c";
     isReadBtn.textContent = "Not read";
-    bookStatus.style.backgroundColor = "#3a9700";
+  } else {
+    book.isRead = true;
     bookStatus.textContent = "Read";
-    totalPages.textContent = `${pages} pages / ${pages} pages`;
+    bookStatus.style.backgroundColor = "#3a9700";
+    isReadBtn.textContent = "Read";
   }
+};
+
+const removeBook = (index) => {
+  myLibrary.splice(index, 1);
 };
 
 function addBookToLibrary(obj) {
