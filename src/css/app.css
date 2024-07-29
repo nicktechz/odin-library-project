@@ -101,7 +101,6 @@ li span {
 .header {
   height: 300px;
   background-color: var(--gray-1);
-  border-radius: 0px 0px var(--border-radius-md) var(--border-radius-md);
   background: rgb(2, 0, 36);
   background: linear-gradient(
     45deg,
@@ -138,12 +137,18 @@ li span {
   color: var(--gray-8);
 }
 .contentNav button {
+  font-weight: 500;
   display: flex;
-  background-color: #65a30d;
+  background-color: transparent;
   padding: 12px 24px;
-  border: none;
+  border: 1px solid var(--white);
   color: var(--white);
   border-radius: var(--border-radius-md);
+  transition: 0.2s all;
+}
+.contentNav button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 .contentNav button svg {
   fill: var(--white);
