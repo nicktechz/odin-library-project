@@ -25,6 +25,7 @@ body {
   display: flex;
   width: 100%;
   padding: 28px 32px;
+  min-height: 100vh;
 }
 
 aside {
@@ -161,24 +162,12 @@ li span {
 .book {
   position: relative;
   padding: 48px;
-  background-color: rgb(0, 0, 0);
+  background-color: #000;
   width: 100%;
   height: 300px;
   border-radius: var(--border-radius-sm);
   display: flex;
   flex-direction: column;
-}
-.book::before {
-  content: "";
-  background-image: url("https://i0.wp.com/princetonbuffer.princeton.edu/wp-content/uploads/sites/185/2015/02/The-Hobbit.jpg?resize=672%2C372&ssl=1");
-  background-size: cover;
-  position: absolute;
-  background-position: center;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.4;
 }
 .book > div {
   position: relative;
@@ -231,4 +220,90 @@ li span {
 .bookFooterBtnGroup {
   display: flex;
   gap: 12px;
+}
+.popupOverlay {
+  display: none;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.popup {
+  color: var(--white);
+  background-color: var(--gray-12);
+  width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.popupHeading {
+  margin-bottom: 12px;
+  padding: 24px;
+  padding-bottom: 12px;
+}
+.popupHeading h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.popupForm form div label {
+  margin-bottom: 4px;
+  display: block;
+  width: 100%;
+}
+.popupForm form div {
+  margin-bottom: 12px;
+}
+.popupForm form div input {
+  background-color: transparent;
+  border: 1px solid var(--gray-11);
+  padding: 6px 24px;
+  width: 100%;
+  border-radius: var(--border-radius-sm);
+}
+.popupForm form div input:focus {
+  outline: 0;
+  color: var(--white);
+}
+.popupForm form div input,
+select {
+  color: var(--white);
+}
+.popupForm #createBook {
+  color: var(--gray-12);
+  background-color: var(--white);
+  padding: 8px 24px;
+  border-radius: var(--border-radius-sm);
+  border: none;
+}
+.popupForm #closeForm {
+  background-color: transparent;
+  border: none;
+  color: var(--white);
+  margin-right: 24px;
+}
+.popupForm button:hover {
+  cursor: pointer;
+}
+.popupForm button {
+  margin-top: 12px;
+}
+.formBody {
+  padding: 0px 24px;
+  padding-bottom: 12px;
+}
+.formFooter {
+  height: 100%;
+  padding: 0px 12px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-top: 1px solid var(--gray-11);
 }

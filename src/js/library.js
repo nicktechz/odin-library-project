@@ -1,4 +1,23 @@
+const modal = document.getElementById("modal");
+const closeBtn = document.getElementById("closeForm");
+
 const libraryBox = document.getElementById("books");
+const addBookBtn = document.getElementById("addBook");
+const bookNameInput = document.getElementById("bookName");
+const bookAuthorInput = document.getElementById("bookAuthor");
+const bookPagesInput = document.getElementById("bookPages");
+const createBookBtn = document.getElementById("createBook");
+
+const closeModal = () => {
+  modal.style.display = "none";
+};
+
+closeBtn.addEventListener("click", () => {
+  closeModal();
+});
+addBookBtn.addEventListener("click", () => {
+  modal.style.display = "block";
+});
 
 const myLibrary = [];
 
@@ -103,6 +122,14 @@ function addBookToLibrary(obj) {
   addBook(myLibrary, index);
 }
 
+createBookBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  addBookToLibrary(
+    new Book(bookNameInput.value, bookAuthorInput.value, bookPagesInput.value)
+  );
+  closeModal();
+});
+
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 const elClubDeLas5Am = new Book(
   "El Club De las 5 Am",
@@ -112,3 +139,9 @@ const elClubDeLas5Am = new Book(
 );
 addBookToLibrary(theHobbit);
 addBookToLibrary(elClubDeLas5Am);
+
+modal.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+});
