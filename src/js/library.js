@@ -93,21 +93,23 @@ const addBook = (arr, index) => {
 
   isReadBtn.addEventListener("click", () => {
     const index = arr.findIndex((book) => book.title === title);
-    toggleStatus(arr[index], bookStatus, isReadBtn);
+    toggleStatus(arr[index], bookStatus, isReadBtn, totalPages);
   });
 };
 
-const toggleStatus = (book, bookStatus, isReadBtn) => {
+const toggleStatus = (book, bookStatus, isReadBtn, totalPages) => {
   if (book.isRead === true) {
     book.isRead = false;
     bookStatus.textContent = "Not read";
     bookStatus.style.backgroundColor = "#b91c1c";
     isReadBtn.textContent = "Not read";
+    totalPages.textContent = `${book.pages} pages / ${book.pages} pages`;
   } else {
     book.isRead = true;
     bookStatus.textContent = "Read";
     bookStatus.style.backgroundColor = "#3a9700";
     isReadBtn.textContent = "Read";
+    totalPages.textContent = `0 pages / ${book.pages} pages`;
   }
 };
 
